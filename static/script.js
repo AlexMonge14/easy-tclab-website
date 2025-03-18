@@ -1,5 +1,25 @@
 const socket = io.connect("http://127.0.0.1:5000");
 
+const charts = {
+    Q1: createChart('Q1Chart', 'Q1 (Heater 1)', 'blue'),
+    Q2: createChart('Q2Chart', 'Q2 (Heater 2)', 'blue'),
+    T1: createChart('T1Chart', 'T1 (Temperature 1)', 'red'),
+    T2: createChart('T2Chart', 'T2 (Temperature 2)', 'red'),
+};
+
+start = 0;
+
+window.addEventListener('click', function(event) {
+    const dropdowns = document.getElementsByClassName("dropdown");
+    for (let dropdown of dropdowns) {
+        const dropdownButton = dropdown.querySelector('button');
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+        if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) {
+            dropdownContent.style.display = "none";
+        }
+    }
+});
+
 socket.on("tclab_status", (data) => {
     const h1 = document.getElementById("response");
     const statusText = data.connected ? "System Connected  :)" : "System Not found  :(";
@@ -19,6 +39,16 @@ socket.on("server_status", (data) => {
 
 socket.on("heater_status", (data) => {
     logMessage(data.status);
+});
+
+
+socket.on("tclab_data", (data) => {
+    const time = new Date().getTime();
+    console.log(data);
+    updateChart(charts.Q1, data.Q1, time);
+    updateChart(charts.Q2, data.Q2, time);
+    updateChart(charts.T1, data.T1, time);
+    updateChart(charts.T2, data.T2, time);
 });
 
 function logMessage(message) {
@@ -47,26 +77,6 @@ function showDropdown(dropdownId) {
     const dropdown = document.getElementById(dropdownId);
     dropdown.style.display = "block";
 }
-
-window.addEventListener('click', function(event) {
-    const dropdowns = document.getElementsByClassName("dropdown");
-    for (let dropdown of dropdowns) {
-        const dropdownButton = dropdown.querySelector('button');
-        const dropdownContent = dropdown.querySelector('.dropdown-content');
-        if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) {
-            dropdownContent.style.display = "none";
-        }
-    }
-});
-
-const charts = {
-    Q1: createChart('Q1Chart', 'Q1 (Heater 1)', 'blue'),
-    Q2: createChart('Q2Chart', 'Q2 (Heater 2)', 'blue'),
-    T1: createChart('T1Chart', 'T1 (Temperature 1)', 'red'),
-    T2: createChart('T2Chart', 'T2 (Temperature 2)', 'red'),
-};
-
-start = 0;
 
 function createChart(elementId, label, borderColor) {
     return new Chart(document.getElementById(elementId), {
@@ -130,12 +140,3 @@ function updateChart(chart, value, time) {
     chart.data.datasets[0].data.push(value);
     chart.update();
 }
-
-socket.on("tclab_data", (data) => {
-    const time = new Date().getTime();
-    console.log(data);
-    updateChart(charts.Q1, data.Q1, time);
-    updateChart(charts.Q2, data.Q2, time);
-    updateChart(charts.T1, data.T1, time);
-    updateChart(charts.T2, data.T2, time);
-});
