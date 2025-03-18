@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Easy TCLab Website</title>
+        <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="static/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+        <script src="static/script.js" defer></script>
+    </head>
+    <body>
+        <div id="container_sx">
+            <div id="controller">
+                <img src="static/Logo E-TCL-W.png">      
+                <h1>TCLab status:</h1>
+                <h1 id="response"></h1>  
+                <div id="row">
+                    <div class="dropdown">
+                        <button class="heater" onclick="showDropdown(1)">Heater 1</button>
+                        <div class="dropdown-content" id="1">
+                            <a href="#" onclick="selectHeat(0, 1)">0%</a>
+                            <a href="#" onclick="selectHeat(50, 1)">50%</a>
+                            <a href="#" onclick="selectHeat(100, 1)">100%</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="heater" onclick="showDropdown(2)">Heater 2</button>
+                        <div class="dropdown-content" id="2">
+                            <a href="#" onclick="selectHeat(0, 2)">0%</a>
+                            <a href="#" onclick="selectHeat(50, 2)">50%</a>
+                            <a href="#" onclick="selectHeat(100, 2)">100%</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="console">
+                <h1 id="label">Console Log</h1>
+                <div id="log"></div>
+            </div>
+        </div>
+        <div id="container_dx">
+            <div class="graph">
+                <canvas id="Q1Chart" width="400" height="300"></canvas>
+                <canvas id="Q2Chart" width="400" height="300"></canvas>
+            </div>
+            <div class="graph">
+                <canvas id="T1Chart" width="400" height="300"></canvas>
+                <canvas id="T2Chart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </body>
+</html>

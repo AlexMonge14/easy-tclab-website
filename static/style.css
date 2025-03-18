@@ -1,0 +1,148 @@
+body {
+    display: flex;
+    background-color: #050a30;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+#container_sx {
+    display: flex;
+    flex-direction: column;
+}
+
+#controller {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #567aeb;
+    border-radius: 15px;
+    width: 400px;
+    height: 410px;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    margin-top: 40px;
+}
+
+h1 {
+    font-family: 'Courier New', monospace;
+    font-size: larger;
+    margin-top: 20px;
+}
+
+#response {
+    height: 20px;
+    margin-top: 0;
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+    animation: blinkText 2s infinite alternate;
+}
+
+@keyframes blinkText {
+    0% {
+        opacity: 1; 
+    }
+    30% {
+        opacity: 1; 
+    }
+    50% {
+        opacity: 0; 
+    }
+    70% {
+        opacity: 1; 
+    }
+}
+
+#row {
+    display: flex;
+    width: 300px;
+    gap: 30px;
+    justify-content: center;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.dropdown button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #050a30;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 105px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #050a30;
+    padding: 12px 32px;
+    font-family: 'Courier New', monospace;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #a7a4a4;
+}
+
+
+#console {
+    margin-top: 30px;
+}
+
+#log {
+    width: 380px;
+    height: 150px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #333;
+    color: white;
+    font-family: monospace;
+    font-size: 13px;
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 2px solid #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#log::-webkit-scrollbar {
+    width: 6px;
+}
+
+#log::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+}
+
+#label {
+    color: white;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+#container_dx {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    margin-left: 70px;
+}
+
+.graph {
+    display: flex;
+    flex-direction: row;
+    gap: 90px;
+}
