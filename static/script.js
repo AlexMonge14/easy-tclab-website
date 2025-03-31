@@ -90,7 +90,8 @@ function createChart(elementId, label, borderColor) {
                 backgroundColor: borderColor,
                 fill: false,
                 tension: 0.1,
-                pointRadius: 5,
+                pointRadius: 2,
+                pointHoverRadius: 5,
             }]
         },
         options: {

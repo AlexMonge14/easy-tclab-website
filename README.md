@@ -6,7 +6,7 @@ The Temperature Control Lab is an application of feedback control with an Arduin
 
 ![](https://apmonitor.com/pdc/uploads/Main/tclab_schematic.png)
 
-More detailed information, please refer to [this documentation](https://tclab.readthedocs.io/en/latest/README.html) 
+For more detailed information, please refer to [this documentation](https://tclab.readthedocs.io/en/latest/README.html) 
 
 ## Folder Structure
 

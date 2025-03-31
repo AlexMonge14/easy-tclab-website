@@ -19,7 +19,7 @@ def check_tclab_connection():
             if not tclab_connected:
                 tclab_object = tclab.TCLab()
                 tclab_connected = True
-            temp = tclab_object.T1
+            tclab_object.LED(20) 
         except:
             if tclab_connected:
                 tclab_connected = False
@@ -36,7 +36,7 @@ def set_heater(percentage, heater):
         else:
             tclab_object.Q2(percentage)
         tclab_object.LED(100)
-        time.sleep(1)
+        time.sleep(0.1)
         tclab_object.LED(20)
         return True
     except:
@@ -50,11 +50,11 @@ def update_data():
             q2 = tclab_object.Q2()
             t1 = tclab_object.T1
             t2 = tclab_object.T2
-            print(q1, q2, t1, t2)
             socketio.emit('tclab_data', {'Q1': q1, 'Q2': q2, 'T1': t1, 'T2': t2})
-            time.sleep(2)
-        except:
-            break
+            time.sleep(0.8)
+        except Exception as e:
+            print(e)
+            continue
             
 
 
